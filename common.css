@@ -1,0 +1,92 @@
+/* ============================================
+   共通スタイル — 全セクションHTML共通で読み込む
+============================================ */
+
+/* カスタムカーソル — デフォルトカーソル非表示 */
+html, body {
+  cursor: none;
+}
+
+a, button, [role="button"] {
+  cursor: none;
+}
+
+/* カーソルドット（メイン） */
+.Cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+/* カーソルリング（外周） */
+.Cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease, border-color 0.4s ease, opacity 0.4s ease;
+}
+
+/* リンク・ボタンホバー時 — ドット拡大 */
+.Cursor.is-hover {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.Cursor-ring.is-hover {
+  width: 60px;
+  height: 60px;
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* テキストホバー時 — 縦長に変形 */
+.Cursor.is-text {
+  width: 3px;
+  height: 24px;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.Cursor-ring.is-text {
+  opacity: 0;
+}
+
+/* 非表示（iframe外やページ離脱時） */
+.Cursor.is-hidden,
+.Cursor-ring.is-hidden {
+  opacity: 0;
+}
+
+/* ============================================
+   レスポンシブ — タッチデバイスではカーソル非表示
+============================================ */
+@media (hover: none), (pointer: coarse) {
+  html, body {
+    cursor: auto;
+  }
+
+  a, button, [role="button"] {
+    cursor: pointer;
+  }
+
+  .Cursor,
+  .Cursor-ring {
+    display: none !important;
+  }
+}
