@@ -1,4 +1,4 @@
-<!-- ===== Solution (Introduction) Section ===== -->
+<!-- ===== Introduction (Solution) ===== -->
 <iframe
   srcdoc="<!DOCTYPE html>
 <html lang=&quot;ja&quot;>
@@ -13,22 +13,41 @@
     html { font-size: 16px; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, &quot;Noto Sans JP&quot;, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, Meiryo, sans-serif;
-      background: #222222;
+      background: #fff;
       color: #fff;
       overflow-x: hidden;
     }
 
-    .spacer-top { height: 100vh; background: #222222; }
-    .spacer-bottom { height: 100vh; background: #222222; }
+    .spacer-top { height: 100vh; background: #fff; }
+    .spacer-bottom { height: 100vh; background: #fff; }
 
     /* INTRODUCTION Section */
     .Solution {
       position: relative;
-      background-color: #222222;
-      color: #fff;
+      background-color: #fff;
+      color: #1e1e1e;
+      overflow: hidden;
       padding-top: 12vh;
       padding-bottom: 0;
       min-height: 250vh;
+    }
+
+    .Solution::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://tatsuhitooka-maker.github.io/yasuhira-2/images/6569768_1824.jpg');
+      background-size: contain;
+      background-position: left bottom;
+      background-repeat: no-repeat;
+      transform: scaleX(-1);
+      z-index: 0;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
     }
 
     .Solution-content {
@@ -37,6 +56,7 @@
       max-width: 1430px;
       margin: 0 auto;
       padding: 0 2rem;
+      z-index: 1;
       z-index: 2;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -90,7 +110,7 @@
       font-weight: 400;
       line-height: 2.2;
       letter-spacing: 0.04em;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(30, 30, 30, 0.7);
       margin-bottom: 2.5rem;
       opacity: 0;
       transform: translateY(30px);
@@ -109,19 +129,19 @@
       min-width: 200px;
       padding: 1rem 2.5rem;
       background: transparent;
-      color: #fff;
+      color: #1e1e1e;
       text-decoration: none;
       font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       border-radius: 50px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(30, 30, 30, 0.3);
       transition: background 0.4s ease, border-color 0.4s ease;
     }
 
     .Solution-button a:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(30, 30, 30, 0.06);
+      border-color: rgba(30, 30, 30, 0.6);
     }
 
     .Solution-imageSide {
@@ -192,15 +212,14 @@
 
   <section class=&quot;Solution&quot;>
     <div class=&quot;Solution-bgFloat -fl01&quot;>
-      <img src=&quot;https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/recruit-img03.webp&quot; alt=&quot;&quot;>
+      <img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img03.png&quot; alt=&quot;&quot;>
     </div>
     <div class=&quot;Solution-bgFloat -fl02&quot;>
-      <img src=&quot;https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/recruit-img06.webp&quot; alt=&quot;&quot;>
+      <img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img06.png&quot; alt=&quot;&quot;>
     </div>
 
     <div class=&quot;Solution-content&quot;>
       <div class=&quot;Solution-textSide&quot;>
-        <p class=&quot;Solution-title&quot;>( Our Solutions )</p>
         <p class=&quot;Solution-lead&quot;>
           <span class=&quot;HeadingReveal-row&quot; data-row=&quot;0&quot;></span>
           <span class=&quot;HeadingReveal-row&quot; data-row=&quot;1&quot;></span>
@@ -218,10 +237,10 @@
 
       <div class=&quot;Solution-imageSide&quot;>
         <div class=&quot;Solution-image -main&quot;>
-          <img src=&quot;https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/business-img.webp&quot; alt=&quot;業務の様子&quot;>
+          <img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/business-img.webp&quot; alt=&quot;業務の様子&quot;>
         </div>
         <div class=&quot;Solution-image -sub&quot;>
-          <img src=&quot;https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/company-img.webp&quot; alt=&quot;会社の様子&quot;>
+          <img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/company-img.webp&quot; alt=&quot;会社の様子&quot;>
         </div>
       </div>
     </div>
@@ -259,8 +278,7 @@
       }
     });
 
-    tl.to('.Solution-title', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0);
-    tl.to(chars, { y: 0, duration: 1, ease: 'power4.out', stagger: { each: 0.03, from: 'start' } }, 0.1);
+    tl.to(chars, { y: 0, duration: 1, ease: 'power4.out', stagger: { each: 0.03, from: 'start' } }, 0);
     tl.to('.Solution-headJa', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.4);
     tl.to('.Solution-description', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.55);
     tl.to('.Solution-button', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.65);
@@ -287,178 +305,7 @@
   style="width:100%; height:100vh; border:none;"
 ></iframe>
 
-<!-- ===== Vision (Expand) Section ===== -->
-<iframe
-  srcdoc="<!DOCTYPE html>
-<html lang=&quot;ja&quot;>
-<head>
-  <meta charset=&quot;UTF-8&quot;>
-  <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
-  <link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;>
-  <link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin>
-  <link href=&quot;https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;>
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { font-size: 16px; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, &quot;Noto Sans JP&quot;, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, Meiryo, sans-serif;
-      background: #222222;
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    .spacer-top { height: 100vh; background: #222222; }
-    .spacer-bottom { height: 100vh; background: #222222; }
-
-    /* EXPAND Section */
-    .Vision {
-      position: relative;
-      background-color: #222222;
-      padding-top: 6vh;
-      min-height: 250vh;
-    }
-
-    .Vision-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .Vision-title {
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .Vision-lead { line-height: 0.9; margin-bottom: 2rem; }
-
-    .Vision-leadRow {
-      display: flex;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .Vision-leadChar {
-      display: inline-block;
-      font-family: &quot;Helvetica Neue&quot;, Arial, sans-serif;
-      font-weight: 500;
-      font-size: clamp(3rem, 8vw, 7rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      transform: translateY(110%);
-      will-change: transform;
-    }
-
-    .Vision-leadChar.is-space { width: 0.3em; }
-
-    .Vision-headJa {
-      font-size: clamp(1rem, 1.8vw, 1.4rem);
-      font-weight: 700;
-      line-height: 1.8;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    .Vision-imageWrap {
-      position: sticky;
-      top: 10vh;
-      width: 90%;
-      max-width: 1300px;
-      margin: 0 auto;
-      border-radius: 16px;
-      overflow: hidden;
-      will-change: width, max-width, border-radius;
-    }
-
-    .Vision-imageWrap img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-      aspect-ratio: 16 / 9;
-    }
-
-    @media (max-width: 820px) {
-      .Vision { padding-top: 4vh; min-height: 200vh; }
-      .Vision-imageWrap { width: 92%; top: 5vh; }
-      .Vision-leadChar { font-size: clamp(2rem, 10vw, 3.5rem); }
-      .Vision-headJa { font-size: 0.95rem; padding: 0 1rem; }
-    }
-  </style>
-</head>
-<body>
-
-  <div class=&quot;spacer-top&quot;></div>
-
-  <section class=&quot;Vision&quot;>
-    <div class=&quot;Vision-header&quot;>
-      <p class=&quot;Vision-title&quot;>( Next New Technology )</p>
-      <p class=&quot;Vision-lead&quot;>
-        <span class=&quot;Vision-leadRow&quot; data-row=&quot;0&quot;></span>
-        <span class=&quot;Vision-leadRow&quot; data-row=&quot;1&quot;></span>
-      </p>
-      <h2 class=&quot;Vision-headJa&quot;>
-        最新技術で、ものづくりの未来を拓く
-      </h2>
-    </div>
-
-    <div class=&quot;Vision-imageWrap&quot;>
-      <img src=&quot;https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/abstract06.jpg&quot; alt=&quot;最新技術&quot;>
-    </div>
-  </section>
-
-  <div class=&quot;spacer-bottom&quot;></div>
-
-  <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js&quot;></script>
-  <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js&quot;></script>
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
-
-    /* 文字分割 */
-    const headingLines = [&quot;Next New&quot;, &quot;Technology&quot;];
-    document.querySelectorAll('.Vision-leadRow').forEach((row, i) => {
-      headingLines[i].split('').forEach(char => {
-        const span = document.createElement('span');
-        span.className = 'Vision-leadChar' + (char === ' ' ? ' is-space' : '');
-        span.textContent = char === ' ' ? '' : char;
-        row.appendChild(span);
-      });
-    });
-
-    /* テキスト登場アニメーション */
-    const section = document.querySelector('.Vision');
-    const chars = document.querySelectorAll('.Vision-leadChar');
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 60%',
-        end: 'top 10%',
-        scrub: false,
-        toggleActions: 'play none none reverse',
-      }
-    });
-
-    tl.to('.Vision-title', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0);
-    tl.to(chars, { y: 0, duration: 1, ease: 'power4.out', stagger: { each: 0.03, from: 'start' } }, 0.1);
-    tl.to('.Vision-headJa', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.4);
-
-    /* 画像拡大（90% → 100vw） */
-    const imageWrap = document.querySelector('.Vision-imageWrap');
-    gsap.to(imageWrap, {
-      width: '100vw', maxWidth: '100vw', borderRadius: '0px', ease: 'none',
-      scrollTrigger: { trigger: imageWrap, start: 'top 60%', end: 'top 5%', scrub: 1 }
-    });
-  </script>
-</body>
-</html>
-"
-  style="width:100%; height:100vh; border:none;"
-></iframe>
-
-<!-- ===== Company (About) Section ===== -->
+<!-- ===== About (Company) ===== -->
 <iframe
   srcdoc="<!DOCTYPE html>
 <html lang=&quot;ja&quot;>
@@ -637,24 +484,23 @@
   <section class=&quot;Company&quot;>
     <div class=&quot;Company-background&quot;>
       <div class=&quot;Company-bgImage -no01&quot;>
-        <img src=&quot;https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/abstract01.jpg&quot; alt=&quot;&quot;>
+        <img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/abstract01.jpg&quot; alt=&quot;&quot;>
       </div>
       <div class=&quot;Company-bgImage -no02&quot;>
-        <img src=&quot;https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/abstract02.jpg&quot; alt=&quot;&quot;>
+        <img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/abstract02.jpg&quot; alt=&quot;&quot;>
       </div>
       <div class=&quot;Company-bgImage -no03&quot;>
-        <img src=&quot;https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/abstract03.jpg&quot; alt=&quot;&quot;>
+        <img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/abstract03.jpg&quot; alt=&quot;&quot;>
       </div>
       <div class=&quot;Company-bgImage -no04&quot;>
-        <img src=&quot;https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/abstract04.jpg&quot; alt=&quot;&quot;>
+        <img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/abstract04.jpg&quot; alt=&quot;&quot;>
       </div>
       <div class=&quot;Company-bgImage -no05&quot;>
-        <img src=&quot;https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/company-img.webp&quot; alt=&quot;&quot;>
+        <img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/company-img.webp&quot; alt=&quot;&quot;>
       </div>
     </div>
 
     <div class=&quot;Company-content&quot;>
-      <h2 class=&quot;Company-title&quot;>( Company )</h2>
       <p class=&quot;Company-lead&quot;>
         <span class=&quot;HeadingReveal-row&quot; data-row=&quot;0&quot;></span>
         <span class=&quot;HeadingReveal-row&quot; data-row=&quot;1&quot;></span>
@@ -704,8 +550,7 @@
       }
     });
 
-    tl.to('.Company-title', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0);
-    tl.to(chars, { y: 0, duration: 1, ease: 'power4.out', stagger: { each: 0.03, from: 'start' } }, 0.1);
+    tl.to(chars, { y: 0, duration: 1, ease: 'power4.out', stagger: { each: 0.03, from: 'start' } }, 0);
     tl.to('.Company-leadJa', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.5);
     tl.to('.Company-description', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.6);
     tl.to('.Company-button', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.7);
@@ -730,14 +575,621 @@
 
     /* 退場アニメーション */
     const exitTl = gsap.timeline({
-      scrollTrigger: { trigger: section, start: '40% top', end: '52% top', scrub: true }
+      scrollTrigger: { trigger: section, start: '70% top', end: '85% top', scrub: true }
     });
-    exitTl.to('.Company-title', { opacity: 0, y: -20, duration: 0.3 }, 0);
     exitTl.to('.Company-lead', { opacity: 0, duration: 0.4 }, 0);
     exitTl.to('.Company-leadJa', { opacity: 0, y: -20, duration: 0.3 }, 0.1);
     exitTl.to('.Company-description', { opacity: 0, y: -20, duration: 0.3 }, 0.15);
     exitTl.to('.Company-button', { opacity: 0, y: -20, duration: 0.3 }, 0.2);
   </script>
+</body>
+</html>
+"
+  style="width:100%; height:100vh; border:none;"
+></iframe>
+
+<!-- ===== Expand (Vision) ===== -->
+<iframe
+  srcdoc="<!DOCTYPE html>
+<html lang=&quot;ja&quot;>
+<head>
+  <meta charset=&quot;UTF-8&quot;>
+  <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+  <link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;>
+  <link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin>
+  <link href=&quot;https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, &quot;Noto Sans JP&quot;, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, Meiryo, sans-serif;
+      background: #222222;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .spacer-top { height: 100vh; background: #222222; }
+    .spacer-bottom { height: 100vh; background: #222222; }
+
+    /* EXPAND Section */
+    .Vision {
+      position: relative;
+      background-color: #222222;
+      padding-top: 6vh;
+      min-height: 250vh;
+    }
+
+    .Vision-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .Vision-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .Vision-lead { line-height: 0.9; margin-bottom: 2rem; }
+
+    .Vision-leadRow {
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .Vision-leadChar {
+      display: inline-block;
+      font-family: &quot;Helvetica Neue&quot;, Arial, sans-serif;
+      font-weight: 500;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      transform: translateY(110%);
+      will-change: transform;
+    }
+
+    .Vision-leadChar.is-space { width: 0.3em; }
+
+    .Vision-headJa {
+      font-size: clamp(1rem, 1.8vw, 1.4rem);
+      font-weight: 700;
+      line-height: 1.8;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .Vision-imageWrap {
+      position: sticky;
+      top: 10vh;
+      width: 90%;
+      max-width: 1300px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      will-change: width, max-width, border-radius;
+    }
+
+    .Vision-imageWrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 16 / 9;
+    }
+
+    @media (max-width: 820px) {
+      .Vision { padding-top: 4vh; min-height: 200vh; }
+      .Vision-imageWrap { width: 92%; top: 5vh; }
+      .Vision-leadChar { font-size: clamp(2rem, 10vw, 3.5rem); }
+      .Vision-headJa { font-size: 0.95rem; padding: 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class=&quot;spacer-top&quot;></div>
+
+  <section class=&quot;Vision&quot;>
+    <div class=&quot;Vision-header&quot;>
+      <p class=&quot;Vision-lead&quot;>
+        <span class=&quot;Vision-leadRow&quot; data-row=&quot;0&quot;></span>
+        <span class=&quot;Vision-leadRow&quot; data-row=&quot;1&quot;></span>
+      </p>
+      <h2 class=&quot;Vision-headJa&quot;>
+        最新技術で、ものづくりの未来を拓く
+      </h2>
+    </div>
+
+    <div class=&quot;Vision-imageWrap&quot;>
+      <img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/abstract06.jpg&quot; alt=&quot;最新技術&quot;>
+    </div>
+  </section>
+
+  <div class=&quot;spacer-bottom&quot;></div>
+
+  <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js&quot;></script>
+  <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js&quot;></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* 文字分割 */
+    const headingLines = [&quot;Next New&quot;, &quot;Technology&quot;];
+    document.querySelectorAll('.Vision-leadRow').forEach((row, i) => {
+      headingLines[i].split('').forEach(char => {
+        const span = document.createElement('span');
+        span.className = 'Vision-leadChar' + (char === ' ' ? ' is-space' : '');
+        span.textContent = char === ' ' ? '' : char;
+        row.appendChild(span);
+      });
+    });
+
+    /* テキスト登場アニメーション */
+    const section = document.querySelector('.Vision');
+    const chars = document.querySelectorAll('.Vision-leadChar');
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 60%',
+        end: 'top 10%',
+        scrub: false,
+        toggleActions: 'play none none reverse',
+      }
+    });
+
+    tl.to(chars, { y: 0, duration: 1, ease: 'power4.out', stagger: { each: 0.03, from: 'start' } }, 0);
+    tl.to('.Vision-headJa', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.4);
+
+    /* 画像拡大（90% → 100vw） */
+    const imageWrap = document.querySelector('.Vision-imageWrap');
+    gsap.to(imageWrap, {
+      width: '100vw', maxWidth: '100vw', borderRadius: '0px', ease: 'none',
+      scrollTrigger: { trigger: imageWrap, start: 'top 60%', end: 'top 5%', scrub: 1 }
+    });
+  </script>
+</body>
+</html>
+"
+  style="width:100%; height:100vh; border:none;"
+></iframe>
+
+<!-- ===== Recruit (FA Solution) ===== -->
+<iframe
+  srcdoc="<!DOCTYPE html>
+<html lang=&quot;ja&quot;>
+<head>
+  <meta charset=&quot;UTF-8&quot;>
+  <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+  <title>RECRUIT Section - TOYOKOH Style</title>
+  <link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;>
+  <link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin>
+  <link href=&quot;https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;>
+  <style>
+    /* ============================================
+       Reset &amp; Base
+    ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: auto;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, &quot;Noto Sans JP&quot;, &quot;Hiragino Kaku Gothic ProN&quot;, &quot;Hiragino Sans&quot;, Meiryo, sans-serif;
+      background: #222222;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ============================================
+       Spacer
+    ============================================ */
+    .spacer-top {
+      height: 100vh;
+      background: #222222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #555;
+      letter-spacing: 0.1em;
+    }
+
+    .spacer-bottom {
+      height: 100vh;
+      background: #222222;
+    }
+
+    /* ============================================
+       RECRUIT Section
+    ============================================ */
+    .Recruit {
+      position: relative;
+      background-color: #222222;
+      min-height: 350vh;
+    }
+
+    /* Sticky viewport — スクロール中ビューポートに固定 */
+    .Recruit-content {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ============================================
+       Image Gallery — 2行横スクロール
+    ============================================ */
+    .Recruit-imageWrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 2rem 0;
+    }
+
+    /* 各行 — 横に画像を並べる */
+    .Recruit-line {
+      display: flex;
+      gap: 1.5rem;
+      will-change: transform;
+    }
+
+    /* 個別の画像カード */
+    .Recruit-image {
+      flex-shrink: 0;
+      width: 28vw;
+      aspect-ratio: 3 / 2;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .Recruit-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* 画像の上に暗いオーバーレイ */
+    .Recruit-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 28, 34, 0.55);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ============================================
+       Text Wrapper — 画像の上にオーバーレイ
+    ============================================ */
+    .Recruit-textWrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .Recruit-textInner {
+      text-align: center;
+      pointer-events: auto;
+    }
+
+    /* サブタイトル */
+    .Recruit-sub {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* 大見出し &quot;FA Solution&quot; */
+    .Recruit-lead {
+      line-height: 0.9;
+      margin-bottom: 2.5rem;
+    }
+
+    .Recruit-leadRow {
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .Recruit-leadChar {
+      display: inline-block;
+      font-family: &quot;Helvetica Neue&quot;, Arial, sans-serif;
+      font-weight: 500;
+      font-size: clamp(3rem, 9vw, 8rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      transform: translateY(110%);
+      will-change: transform;
+    }
+
+    .Recruit-leadChar.is-space {
+      width: 0.3em;
+    }
+
+    /* 日本語テキスト */
+    .Recruit-text {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 2;
+      letter-spacing: 0.06em;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    /* Read More ボタン */
+    .Recruit-button {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .Recruit-button a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 200px;
+      padding: 1rem 2.5rem;
+      background: transparent;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      transition: background 0.4s ease, border-color 0.4s ease;
+    }
+
+    .Recruit-button a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* ============================================
+       Responsive
+    ============================================ */
+    @media (max-width: 820px) {
+      .Recruit {
+        min-height: 300vh;
+      }
+
+      .Recruit-imageWrapper {
+        gap: 0.8rem;
+      }
+
+      .Recruit-line {
+        gap: 0.8rem;
+      }
+
+      .Recruit-image {
+        width: 45vw;
+      }
+
+      .Recruit-leadChar {
+        font-size: clamp(2.2rem, 11vw, 4.5rem);
+      }
+
+      .Recruit-text {
+        font-size: 0.85rem;
+        padding: 0 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class=&quot;spacer-top&quot;>Scroll Down</div>
+
+  <!-- ============================================
+       RECRUIT SECTION
+  ============================================ -->
+  <div class=&quot;Recruit&quot;>
+    <div class=&quot;Recruit-content&quot;>
+
+      <!-- 2行横スクロール画像ギャラリー -->
+      <div class=&quot;Recruit-imageWrapper&quot;>
+        <!-- 行1（右→左にスクロール） -->
+        <div class=&quot;Recruit-line&quot; data-direction=&quot;left&quot;>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img01.png&quot; alt=&quot;&quot;></div>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img02.png&quot; alt=&quot;&quot;></div>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img03.png&quot; alt=&quot;&quot;></div>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img04.png&quot; alt=&quot;&quot;></div>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img05.png&quot; alt=&quot;&quot;></div>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img06.png&quot; alt=&quot;&quot;></div>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img07.png&quot; alt=&quot;&quot;></div>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img08.png&quot; alt=&quot;&quot;></div>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img01.png&quot; alt=&quot;&quot;></div>
+        </div>
+
+        <!-- 行2（左→右にスクロール） -->
+        <div class=&quot;Recruit-line&quot; data-direction=&quot;right&quot;>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img05.png&quot; alt=&quot;&quot;></div>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img06.png&quot; alt=&quot;&quot;></div>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img07.png&quot; alt=&quot;&quot;></div>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img08.png&quot; alt=&quot;&quot;></div>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img01.png&quot; alt=&quot;&quot;></div>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img02.png&quot; alt=&quot;&quot;></div>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img03.png&quot; alt=&quot;&quot;></div>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img04.png&quot; alt=&quot;&quot;></div>
+          <div class=&quot;Recruit-image&quot;><img src=&quot;https://tatsuhitooka-maker.github.io/yasuhira-2/images/recruit/recruit-img05.png&quot; alt=&quot;&quot;></div>
+        </div>
+      </div>
+
+      <!-- 暗いオーバーレイ -->
+      <div class=&quot;Recruit-overlay&quot;></div>
+
+      <!-- テキストオーバーレイ -->
+      <div class=&quot;Recruit-textWrapper&quot;>
+        <div class=&quot;Recruit-textInner&quot;>
+          <p class=&quot;Recruit-sub&quot;>Innovate Your Production</p>
+          <p class=&quot;Recruit-lead&quot;>
+            <span class=&quot;Recruit-leadRow&quot; data-row=&quot;0&quot;><!-- FA Solution --></span>
+          </p>
+          <p class=&quot;Recruit-text&quot;>
+            従来の工程に課題を抱える現場へ。<br>
+            ヤスヒラのFA装置は、生産性向上・省人化・品質改善を<br>
+            同時に実現し、お客様の製造現場を次のステージへ進化させます。
+          </p>
+          <div class=&quot;Recruit-button&quot;>
+            <a href=&quot;#&quot;>Read More</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class=&quot;spacer-bottom&quot;></div>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js&quot;></script>
+  <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js&quot;></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* ============================================
+       1. 大見出しの文字分割
+    ============================================ */
+    const headingLines = [&quot;FA Solution&quot;];
+    const rows = document.querySelectorAll('.Recruit-leadRow');
+    rows.forEach((row, i) => {
+      headingLines[i].split('').forEach(char => {
+        const span = document.createElement('span');
+        span.className = 'Recruit-leadChar' + (char === ' ' ? ' is-space' : '');
+        span.textContent = char === ' ' ? '' : char;
+        row.appendChild(span);
+      });
+    });
+
+    /* ============================================
+       2. 画像行の横パララックス（スクロール連動）
+    ============================================ */
+    const recruitSection = document.querySelector('.Recruit');
+    const lines = document.querySelectorAll('.Recruit-line');
+
+    lines.forEach((line, i) => {
+      const direction = line.dataset.direction;
+      const images = line.querySelectorAll('.Recruit-image');
+      const totalW = images.length * (images[0].offsetWidth + 24);
+
+      // 初期位置: right行は左寄せ、left行は右端からスタート
+      if (direction === 'left') {
+        gsap.set(line, { x: -(totalW - window.innerWidth) * 0.3 });
+      } else {
+        gsap.set(line, { x: -totalW * 0.15 });
+      }
+
+      // スクロールに連動して横移動
+      const xDistance = direction === 'left' ? (totalW * 0.3) : -(totalW * 0.3);
+
+      gsap.to(line, {
+        x: `+=${xDistance}`,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: recruitSection,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        }
+      });
+    });
+
+    /* ============================================
+       3. テキスト登場アニメーション
+    ============================================ */
+    const chars = document.querySelectorAll('.Recruit-leadChar');
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: recruitSection,
+        start: 'top 50%',
+        end: 'top 10%',
+        scrub: false,
+        toggleActions: 'play none none reverse',
+      }
+    });
+
+    // サブタイトル
+    tl.to('.Recruit-sub', {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: 'power3.out'
+    }, 0);
+
+    // 大見出し 1文字ずつ
+    tl.to(chars, {
+      y: 0,
+      duration: 1,
+      ease: 'power4.out',
+      stagger: { each: 0.03, from: 'start' }
+    }, 0.1);
+
+    // 日本語テキスト
+    tl.to('.Recruit-text', {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: 'power3.out'
+    }, 0.5);
+
+    // ボタン
+    tl.to('.Recruit-button', {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: 'power3.out'
+    }, 0.6);
+
+    /* ============================================
+       4. 退場アニメーション — セクション後半でフェードアウト
+    ============================================ */
+    const exitTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: recruitSection,
+        start: '55% top',
+        end: '65% top',
+        scrub: true,
+      }
+    });
+
+    exitTl.to('.Recruit-sub', { opacity: 0, y: -20, duration: 0.3 }, 0);
+    exitTl.to('.Recruit-lead', { opacity: 0, duration: 0.4 }, 0);
+    exitTl.to('.Recruit-text', { opacity: 0, y: -20, duration: 0.3 }, 0.1);
+    exitTl.to('.Recruit-button', { opacity: 0, y: -20, duration: 0.3 }, 0.15);
+  </script>
+
 </body>
 </html>
 "
