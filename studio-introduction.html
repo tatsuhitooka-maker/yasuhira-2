@@ -20,7 +20,7 @@
     .spacer-bottom { height: 100vh; background: #222222; }
 
     /* INTRODUCTION Section */
-    .Introduction {
+    .Solution {
       position: relative;
       background-color: #222222;
       color: #fff;
@@ -29,7 +29,7 @@
       min-height: 250vh;
     }
 
-    .Introduction-content {
+    .Solution-content {
       position: sticky;
       top: 8vh;
       max-width: 1430px;
@@ -42,9 +42,9 @@
       align-items: start;
     }
 
-    .Introduction-textSide { padding-top: 2rem; }
+    .Solution-textSide { padding-top: 2rem; }
 
-    .Introduction-title {
+    .Solution-title {
       font-size: 0.85rem;
       font-weight: 700;
       letter-spacing: 0.15em;
@@ -53,15 +53,15 @@
       transform: translateY(20px);
     }
 
-    .Introduction-lead { line-height: 0.9; margin-bottom: 2.5rem; }
+    .Solution-lead { line-height: 0.9; margin-bottom: 2.5rem; }
 
-    .SectionLead-row {
+    .HeadingReveal-row {
       display: flex;
       justify-content: flex-start;
       overflow: hidden;
     }
 
-    .SectionLead-char {
+    .HeadingReveal-char {
       display: inline-block;
       font-family: "Helvetica Neue", Arial, sans-serif;
       font-weight: 500;
@@ -72,9 +72,9 @@
       will-change: transform;
     }
 
-    .SectionLead-char.is-space { width: 0.3em; }
+    .HeadingReveal-char.is-space { width: 0.3em; }
 
-    .Introduction-headJa {
+    .Solution-headJa {
       font-size: clamp(1.1rem, 2vw, 1.6rem);
       font-weight: 700;
       line-height: 1.8;
@@ -83,7 +83,7 @@
       transform: translateY(30px);
     }
 
-    .Introduction-description {
+    .Solution-description {
       font-size: 0.95rem;
       font-weight: 400;
       line-height: 2.2;
@@ -94,13 +94,13 @@
       transform: translateY(30px);
     }
 
-    .Introduction-button {
+    .Solution-button {
       width: fit-content;
       opacity: 0;
       transform: translateY(20px);
     }
 
-    .Introduction-button a {
+    .Solution-button a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -117,19 +117,19 @@
       transition: background 0.4s ease, border-color 0.4s ease;
     }
 
-    .Introduction-button a:hover {
+    .Solution-button a:hover {
       background: rgba(255, 255, 255, 0.08);
       border-color: rgba(255, 255, 255, 0.6);
     }
 
-    .Introduction-imageSide {
+    .Solution-imageSide {
       position: relative;
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
     }
 
-    .Introduction-image {
+    .Solution-image {
       border-radius: 6px;
       overflow: hidden;
       opacity: 0;
@@ -137,50 +137,50 @@
       will-change: transform, opacity;
     }
 
-    .Introduction-image img {
+    .Solution-image img {
       width: 100%;
       height: auto;
       display: block;
       object-fit: cover;
     }
 
-    .Introduction-image.-main { aspect-ratio: 4 / 3; }
-    .Introduction-image.-sub { aspect-ratio: 16 / 9; }
+    .Solution-image.-main { aspect-ratio: 4 / 3; }
+    .Solution-image.-sub { aspect-ratio: 16 / 9; }
 
-    .Introduction-bgFloat {
+    .Solution-bgFloat {
       position: absolute;
       z-index: 0;
       pointer-events: none;
     }
 
-    .Introduction-bgFloat img {
+    .Solution-bgFloat img {
       width: 100%; height: 100%;
       object-fit: cover;
       border-radius: 4px;
       display: block;
     }
 
-    .Introduction-bgFloat.-fl01 {
+    .Solution-bgFloat.-fl01 {
       top: 50%; left: -8%;
       width: 32rem; height: 22rem;
       opacity: 0;
     }
 
-    .Introduction-bgFloat.-fl02 {
+    .Solution-bgFloat.-fl02 {
       top: 70%; right: -6%;
       width: 28rem; height: 18rem;
       opacity: 0;
     }
 
     @media (max-width: 820px) {
-      .Introduction { padding-top: 8vh; min-height: 200vh; }
-      .Introduction-content { top: 5vh; grid-template-columns: 1fr; gap: 2rem; padding: 0 1rem; }
-      .SectionLead-char { font-size: clamp(2rem, 10vw, 3.5rem); }
-      .Introduction-headJa { font-size: 1rem; }
-      .Introduction-description { font-size: 0.85rem; }
-      .Introduction-image.-main { aspect-ratio: 16 / 9; }
-      .Introduction-bgFloat.-fl01 { width: 18rem; height: 12rem; left: -3%; }
-      .Introduction-bgFloat.-fl02 { width: 16rem; height: 10rem; }
+      .Solution { padding-top: 8vh; min-height: 200vh; }
+      .Solution-content { top: 5vh; grid-template-columns: 1fr; gap: 2rem; padding: 0 1rem; }
+      .HeadingReveal-char { font-size: clamp(2rem, 10vw, 3.5rem); }
+      .Solution-headJa { font-size: 1rem; }
+      .Solution-description { font-size: 0.85rem; }
+      .Solution-image.-main { aspect-ratio: 16 / 9; }
+      .Solution-bgFloat.-fl01 { width: 18rem; height: 12rem; left: -3%; }
+      .Solution-bgFloat.-fl02 { width: 16rem; height: 10rem; }
     }
   </style>
 </head>
@@ -188,37 +188,37 @@
 
   <div class="spacer-top"></div>
 
-  <section class="Introduction">
-    <div class="Introduction-bgFloat -fl01">
+  <section class="Solution">
+    <div class="Solution-bgFloat -fl01">
       <img src="https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/recruit-img03.webp" alt="">
     </div>
-    <div class="Introduction-bgFloat -fl02">
+    <div class="Solution-bgFloat -fl02">
       <img src="https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/recruit-img06.webp" alt="">
     </div>
 
-    <div class="Introduction-content">
-      <div class="Introduction-textSide">
-        <p class="Introduction-title">( Our Solutions )</p>
-        <p class="Introduction-lead">
-          <span class="SectionLead-row" data-row="0"></span>
-          <span class="SectionLead-row" data-row="1"></span>
+    <div class="Solution-content">
+      <div class="Solution-textSide">
+        <p class="Solution-title">( Our Solutions )</p>
+        <p class="Solution-lead">
+          <span class="HeadingReveal-row" data-row="0"></span>
+          <span class="HeadingReveal-row" data-row="1"></span>
         </p>
-        <h2 class="Introduction-headJa">
+        <h2 class="Solution-headJa">
           お客様の稼働を止めない<br>一貫したものづくり支援
         </h2>
-        <p class="Introduction-description">
+        <p class="Solution-description">
           私たちは1937年創業の生産財専門商社。FA装置の設計・製造から精密工作機械・工具の販売や加工技術による試作支援まで、一貫したものづくり支援で、製造業の省人化・自動化・生産性・品質向上を支えます。
         </p>
-        <div class="Introduction-button">
+        <div class="Solution-button">
           <a href="#">Read More</a>
         </div>
       </div>
 
-      <div class="Introduction-imageSide">
-        <div class="Introduction-image -main">
+      <div class="Solution-imageSide">
+        <div class="Solution-image -main">
           <img src="https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/business-img.webp" alt="業務の様子">
         </div>
-        <div class="Introduction-image -sub">
+        <div class="Solution-image -sub">
           <img src="https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/company-img.webp" alt="会社の様子">
         </div>
       </div>
@@ -234,18 +234,18 @@
 
     /* 文字分割 */
     const headingLines = ["Made in", "Yasuhira"];
-    document.querySelectorAll('.SectionLead-row').forEach((row, i) => {
+    document.querySelectorAll('.HeadingReveal-row').forEach((row, i) => {
       headingLines[i].split('').forEach(char => {
         const span = document.createElement('span');
-        span.className = 'SectionLead-char' + (char === ' ' ? ' is-space' : '');
+        span.className = 'HeadingReveal-char' + (char === ' ' ? ' is-space' : '');
         span.textContent = char === ' ' ? '' : char;
         row.appendChild(span);
       });
     });
 
     /* 登場アニメーション */
-    const section = document.querySelector('.Introduction');
-    const chars = document.querySelectorAll('.SectionLead-char');
+    const section = document.querySelector('.Solution');
+    const chars = document.querySelectorAll('.HeadingReveal-char');
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -257,18 +257,18 @@
       }
     });
 
-    tl.to('.Introduction-title', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0);
+    tl.to('.Solution-title', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0);
     tl.to(chars, { y: 0, duration: 1, ease: 'power4.out', stagger: { each: 0.03, from: 'start' } }, 0.1);
-    tl.to('.Introduction-headJa', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.4);
-    tl.to('.Introduction-description', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.55);
-    tl.to('.Introduction-button', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.65);
+    tl.to('.Solution-headJa', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.4);
+    tl.to('.Solution-description', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.55);
+    tl.to('.Solution-button', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.65);
 
-    document.querySelectorAll('.Introduction-image').forEach((img, i) => {
+    document.querySelectorAll('.Solution-image').forEach((img, i) => {
       tl.to(img, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, 0.3 + i * 0.15);
     });
 
     /* 背景浮遊画像 */
-    document.querySelectorAll('.Introduction-bgFloat').forEach((fl, i) => {
+    document.querySelectorAll('.Solution-bgFloat').forEach((fl, i) => {
       gsap.to(fl, {
         opacity: 0.6, y: -30, duration: 1.2, ease: 'power2.out',
         scrollTrigger: { trigger: section, start: `top ${40 - i * 10}%`, toggleActions: 'play none none reverse' }

@@ -20,19 +20,19 @@
     .spacer-bottom { height: 100vh; background: #222222; }
 
     /* EXPAND Section */
-    .Expand {
+    .Vision {
       position: relative;
       background-color: #222222;
       padding-top: 6vh;
       min-height: 250vh;
     }
 
-    .Expand-header {
+    .Vision-header {
       text-align: center;
       margin-bottom: 4rem;
     }
 
-    .Expand-title {
+    .Vision-title {
       font-size: 0.85rem;
       font-weight: 700;
       letter-spacing: 0.15em;
@@ -41,15 +41,15 @@
       transform: translateY(20px);
     }
 
-    .Expand-lead { line-height: 0.9; margin-bottom: 2rem; }
+    .Vision-lead { line-height: 0.9; margin-bottom: 2rem; }
 
-    .Expand-leadRow {
+    .Vision-leadRow {
       display: flex;
       justify-content: center;
       overflow: hidden;
     }
 
-    .Expand-leadChar {
+    .Vision-leadChar {
       display: inline-block;
       font-family: "Helvetica Neue", Arial, sans-serif;
       font-weight: 500;
@@ -60,9 +60,9 @@
       will-change: transform;
     }
 
-    .Expand-leadChar.is-space { width: 0.3em; }
+    .Vision-leadChar.is-space { width: 0.3em; }
 
-    .Expand-headJa {
+    .Vision-headJa {
       font-size: clamp(1rem, 1.8vw, 1.4rem);
       font-weight: 700;
       line-height: 1.8;
@@ -70,7 +70,7 @@
       transform: translateY(30px);
     }
 
-    .Expand-imageWrap {
+    .Vision-imageWrap {
       position: sticky;
       top: 10vh;
       width: 90%;
@@ -81,7 +81,7 @@
       will-change: width, max-width, border-radius;
     }
 
-    .Expand-imageWrap img {
+    .Vision-imageWrap img {
       width: 100%;
       height: auto;
       display: block;
@@ -90,10 +90,10 @@
     }
 
     @media (max-width: 820px) {
-      .Expand { padding-top: 4vh; min-height: 200vh; }
-      .Expand-imageWrap { width: 92%; top: 5vh; }
-      .Expand-leadChar { font-size: clamp(2rem, 10vw, 3.5rem); }
-      .Expand-headJa { font-size: 0.95rem; padding: 0 1rem; }
+      .Vision { padding-top: 4vh; min-height: 200vh; }
+      .Vision-imageWrap { width: 92%; top: 5vh; }
+      .Vision-leadChar { font-size: clamp(2rem, 10vw, 3.5rem); }
+      .Vision-headJa { font-size: 0.95rem; padding: 0 1rem; }
     }
   </style>
 </head>
@@ -101,19 +101,19 @@
 
   <div class="spacer-top"></div>
 
-  <section class="Expand">
-    <div class="Expand-header">
-      <p class="Expand-title">( Next New Technology )</p>
-      <p class="Expand-lead">
-        <span class="Expand-leadRow" data-row="0"></span>
-        <span class="Expand-leadRow" data-row="1"></span>
+  <section class="Vision">
+    <div class="Vision-header">
+      <p class="Vision-title">( Next New Technology )</p>
+      <p class="Vision-lead">
+        <span class="Vision-leadRow" data-row="0"></span>
+        <span class="Vision-leadRow" data-row="1"></span>
       </p>
-      <h2 class="Expand-headJa">
+      <h2 class="Vision-headJa">
         最新技術で、ものづくりの未来を拓く
       </h2>
     </div>
 
-    <div class="Expand-imageWrap">
+    <div class="Vision-imageWrap">
       <img src="https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/abstract06.jpg" alt="最新技術">
     </div>
   </section>
@@ -127,18 +127,18 @@
 
     /* 文字分割 */
     const headingLines = ["Next New", "Technology"];
-    document.querySelectorAll('.Expand-leadRow').forEach((row, i) => {
+    document.querySelectorAll('.Vision-leadRow').forEach((row, i) => {
       headingLines[i].split('').forEach(char => {
         const span = document.createElement('span');
-        span.className = 'Expand-leadChar' + (char === ' ' ? ' is-space' : '');
+        span.className = 'Vision-leadChar' + (char === ' ' ? ' is-space' : '');
         span.textContent = char === ' ' ? '' : char;
         row.appendChild(span);
       });
     });
 
     /* テキスト登場アニメーション */
-    const section = document.querySelector('.Expand');
-    const chars = document.querySelectorAll('.Expand-leadChar');
+    const section = document.querySelector('.Vision');
+    const chars = document.querySelectorAll('.Vision-leadChar');
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -150,12 +150,12 @@
       }
     });
 
-    tl.to('.Expand-title', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0);
+    tl.to('.Vision-title', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0);
     tl.to(chars, { y: 0, duration: 1, ease: 'power4.out', stagger: { each: 0.03, from: 'start' } }, 0.1);
-    tl.to('.Expand-headJa', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.4);
+    tl.to('.Vision-headJa', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.4);
 
     /* 画像拡大（90% → 100vw） */
-    const imageWrap = document.querySelector('.Expand-imageWrap');
+    const imageWrap = document.querySelector('.Vision-imageWrap');
     gsap.to(imageWrap, {
       width: '100vw', maxWidth: '100vw', borderRadius: '0px', ease: 'none',
       scrollTrigger: { trigger: imageWrap, start: 'top 60%', end: 'top 5%', scrub: 1 }
