@@ -192,7 +192,6 @@
     </div>
 
     <div class="Company-content">
-      <h2 class="Company-title">( Company )</h2>
       <p class="Company-lead">
         <span class="HeadingReveal-row" data-row="0"></span>
         <span class="HeadingReveal-row" data-row="1"></span>
@@ -242,8 +241,7 @@
       }
     });
 
-    tl.to('.Company-title', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0);
-    tl.to(chars, { y: 0, duration: 1, ease: 'power4.out', stagger: { each: 0.03, from: 'start' } }, 0.1);
+    tl.to(chars, { y: 0, duration: 1, ease: 'power4.out', stagger: { each: 0.03, from: 'start' } }, 0);
     tl.to('.Company-leadJa', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.5);
     tl.to('.Company-description', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.6);
     tl.to('.Company-button', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.7);
@@ -268,9 +266,8 @@
 
     /* 退場アニメーション */
     const exitTl = gsap.timeline({
-      scrollTrigger: { trigger: section, start: '40% top', end: '52% top', scrub: true }
+      scrollTrigger: { trigger: section, start: '70% top', end: '85% top', scrub: true }
     });
-    exitTl.to('.Company-title', { opacity: 0, y: -20, duration: 0.3 }, 0);
     exitTl.to('.Company-lead', { opacity: 0, duration: 0.4 }, 0);
     exitTl.to('.Company-leadJa', { opacity: 0, y: -20, duration: 0.3 }, 0.1);
     exitTl.to('.Company-description', { opacity: 0, y: -20, duration: 0.3 }, 0.15);

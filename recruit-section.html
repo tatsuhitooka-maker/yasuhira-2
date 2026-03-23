@@ -24,7 +24,7 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-      background: #0d0d0d;
+      background: #222222;
       color: #fff;
       overflow-x: hidden;
     }
@@ -34,7 +34,7 @@
     ============================================ */
     .spacer-top {
       height: 100vh;
-      background: #0d0d0d;
+      background: #222222;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -45,7 +45,7 @@
 
     .spacer-bottom {
       height: 100vh;
-      background: #0d0d0d;
+      background: #222222;
     }
 
     /* ============================================
@@ -53,7 +53,7 @@
     ============================================ */
     .Recruit {
       position: relative;
-      background-color: #1a1c22;
+      background-color: #222222;
       min-height: 350vh;
     }
 
@@ -66,26 +66,24 @@
     }
 
     /* ============================================
-       Image Gallery — 3列パララックス
+       Image Gallery — 2行横スクロール
     ============================================ */
     .Recruit-imageWrapper {
       position: absolute;
       top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 1.5rem;
+      left: 0;
       width: 100%;
-      max-width: 1400px;
       height: 100%;
-      padding: 0 1rem;
-    }
-
-    /* 各列 — 縦に画像を並べる */
-    .Recruit-line {
-      flex: 1;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 2rem 0;
+    }
+
+    /* 各行 — 横に画像を並べる */
+    .Recruit-line {
+      display: flex;
       gap: 1.5rem;
       will-change: transform;
     }
@@ -93,8 +91,8 @@
     /* 個別の画像カード */
     .Recruit-image {
       flex-shrink: 0;
-      width: 100%;
-      aspect-ratio: 3 / 4;
+      width: 28vw;
+      aspect-ratio: 3 / 2;
       border-radius: 6px;
       overflow: hidden;
     }
@@ -139,17 +137,18 @@
       pointer-events: auto;
     }
 
-    /* ( Recruit ) タイトル */
-    .Recruit-title {
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      margin-bottom: 1.5rem;
+    /* サブタイトル */
+    .Recruit-sub {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
       opacity: 0;
       transform: translateY(20px);
     }
 
-    /* 大見出し "Create Innovation" */
+    /* 大見出し "FA Solution" */
     .Recruit-lead {
       line-height: 0.9;
       margin-bottom: 2.5rem;
@@ -225,11 +224,14 @@
 
       .Recruit-imageWrapper {
         gap: 0.8rem;
-        padding: 0 0.5rem;
       }
 
       .Recruit-line {
         gap: 0.8rem;
+      }
+
+      .Recruit-image {
+        width: 45vw;
       }
 
       .Recruit-leadChar {
@@ -253,30 +255,26 @@
   <div class="Recruit">
     <div class="Recruit-content">
 
-      <!-- 3列画像ギャラリー -->
+      <!-- 2行横スクロール画像ギャラリー -->
       <div class="Recruit-imageWrapper">
-        <!-- 列1（下→上にスクロール） -->
-        <div class="Recruit-line" data-direction="down">
+        <!-- 行1（右→左にスクロール） -->
+        <div class="Recruit-line" data-direction="left">
           <div class="Recruit-image"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&q=80" alt=""></div>
           <div class="Recruit-image"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&q=80" alt=""></div>
           <div class="Recruit-image"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&q=80" alt=""></div>
           <div class="Recruit-image"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=500&q=80" alt=""></div>
           <div class="Recruit-image"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&q=80" alt=""></div>
           <div class="Recruit-image"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=500&q=80" alt=""></div>
-        </div>
-
-        <!-- 列2（上→下にスクロール） -->
-        <div class="Recruit-line" data-direction="up">
           <div class="Recruit-image"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=500&q=80" alt=""></div>
           <div class="Recruit-image"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&q=80" alt=""></div>
           <div class="Recruit-image"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=80" alt=""></div>
+        </div>
+
+        <!-- 行2（左→右にスクロール） -->
+        <div class="Recruit-line" data-direction="right">
           <div class="Recruit-image"><img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=500&q=80" alt=""></div>
           <div class="Recruit-image"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&q=80" alt=""></div>
           <div class="Recruit-image"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&q=80" alt=""></div>
-        </div>
-
-        <!-- 列3（下→上にスクロール） -->
-        <div class="Recruit-line" data-direction="down">
           <div class="Recruit-image"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&q=80" alt=""></div>
           <div class="Recruit-image"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=500&q=80" alt=""></div>
           <div class="Recruit-image"><img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=500&q=80" alt=""></div>
@@ -292,14 +290,14 @@
       <!-- テキストオーバーレイ -->
       <div class="Recruit-textWrapper">
         <div class="Recruit-textInner">
-          <h2 class="Recruit-title">( Recruit )</h2>
+          <p class="Recruit-sub">Innovate Your Production</p>
           <p class="Recruit-lead">
-            <span class="Recruit-leadRow" data-row="0"><!-- Create --></span>
-            <span class="Recruit-leadRow" data-row="1"><!-- Innovation --></span>
+            <span class="Recruit-leadRow" data-row="0"><!-- FA Solution --></span>
           </p>
           <p class="Recruit-text">
-            まだ、世の中にない価値を<br>
-            一緒につくり、育てていきませんか?
+            従来の工程に課題を抱える現場へ。<br>
+            ヤスヒラのFA装置は、生産性向上・省人化・品質改善を<br>
+            同時に実現し、お客様の製造現場を次のステージへ進化させます。
           </p>
           <div class="Recruit-button">
             <a href="#">Read More</a>
@@ -322,7 +320,7 @@
     /* ============================================
        1. 大見出しの文字分割
     ============================================ */
-    const headingLines = ["Create", "Innovation"];
+    const headingLines = ["FA Solution"];
     const rows = document.querySelectorAll('.Recruit-leadRow');
     rows.forEach((row, i) => {
       headingLines[i].split('').forEach(char => {
@@ -334,27 +332,28 @@
     });
 
     /* ============================================
-       2. 画像列のパララックス（スクロール連動）
+       2. 画像行の横パララックス（スクロール連動）
     ============================================ */
     const recruitSection = document.querySelector('.Recruit');
     const lines = document.querySelectorAll('.Recruit-line');
 
     lines.forEach((line, i) => {
       const direction = line.dataset.direction;
-      // 列の総高さから画面高さを引いた分だけスクロールさせる
       const images = line.querySelectorAll('.Recruit-image');
-      const totalH = images.length * (images[0].offsetHeight + 24); // 24 = gap
+      const totalW = images.length * (images[0].offsetWidth + 24);
 
-      // 初期位置: down列は上寄せ(0)、up列は下寄せ(マイナス)
-      if (direction === 'up') {
-        gsap.set(line, { y: -(totalH - window.innerHeight) * 0.4 });
+      // 初期位置: right行は左寄せ、left行は右端からスタート
+      if (direction === 'left') {
+        gsap.set(line, { x: -(totalW - window.innerWidth) * 0.3 });
+      } else {
+        gsap.set(line, { x: -totalW * 0.15 });
       }
 
-      // スクロールに連動してパララックス移動
-      const yDistance = direction === 'down' ? -(totalH * 0.35) : (totalH * 0.25);
+      // スクロールに連動して横移動
+      const xDistance = direction === 'left' ? (totalW * 0.3) : -(totalW * 0.3);
 
       gsap.to(line, {
-        y: `+=${yDistance}`,
+        x: `+=${xDistance}`,
         ease: 'none',
         scrollTrigger: {
           trigger: recruitSection,
@@ -380,8 +379,8 @@
       }
     });
 
-    // ( Recruit ) タイトル
-    tl.to('.Recruit-title', {
+    // サブタイトル
+    tl.to('.Recruit-sub', {
       opacity: 1,
       y: 0,
       duration: 0.6,
@@ -424,7 +423,7 @@
       }
     });
 
-    exitTl.to('.Recruit-title', { opacity: 0, y: -20, duration: 0.3 }, 0);
+    exitTl.to('.Recruit-sub', { opacity: 0, y: -20, duration: 0.3 }, 0);
     exitTl.to('.Recruit-lead', { opacity: 0, duration: 0.4 }, 0);
     exitTl.to('.Recruit-text', { opacity: 0, y: -20, duration: 0.3 }, 0.1);
     exitTl.to('.Recruit-button', { opacity: 0, y: -20, duration: 0.3 }, 0.15);

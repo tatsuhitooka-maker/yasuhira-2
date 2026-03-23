@@ -103,7 +103,6 @@
 
   <section class="Vision">
     <div class="Vision-header">
-      <p class="Vision-title">( Next New Technology )</p>
       <p class="Vision-lead">
         <span class="Vision-leadRow" data-row="0"></span>
         <span class="Vision-leadRow" data-row="1"></span>
@@ -114,7 +113,7 @@
     </div>
 
     <div class="Vision-imageWrap">
-      <img src="https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/abstract06.jpg" alt="最新技術">
+      <img src="images/abstract06.jpg" alt="最新技術">
     </div>
   </section>
 
@@ -150,8 +149,7 @@
       }
     });
 
-    tl.to('.Vision-title', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0);
-    tl.to(chars, { y: 0, duration: 1, ease: 'power4.out', stagger: { each: 0.03, from: 'start' } }, 0.1);
+    tl.to(chars, { y: 0, duration: 1, ease: 'power4.out', stagger: { each: 0.03, from: 'start' } }, 0);
     tl.to('.Vision-headJa', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.4);
 
     /* 画像拡大（90% → 100vw） */

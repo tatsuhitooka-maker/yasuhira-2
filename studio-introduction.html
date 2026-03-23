@@ -11,22 +11,41 @@
     html { font-size: 16px; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-      background: #222222;
+      background: #fff;
       color: #fff;
       overflow-x: hidden;
     }
 
-    .spacer-top { height: 100vh; background: #222222; }
-    .spacer-bottom { height: 100vh; background: #222222; }
+    .spacer-top { height: 100vh; background: #fff; }
+    .spacer-bottom { height: 100vh; background: #fff; }
 
     /* INTRODUCTION Section */
     .Solution {
       position: relative;
-      background-color: #222222;
-      color: #fff;
+      background-color: #fff;
+      color: #1e1e1e;
+      overflow: hidden;
       padding-top: 12vh;
       padding-bottom: 0;
       min-height: 250vh;
+    }
+
+    .Solution::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('images/6569768_1824.jpg');
+      background-size: contain;
+      background-position: left bottom;
+      background-repeat: no-repeat;
+      transform: scaleX(-1);
+      z-index: 0;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
     }
 
     .Solution-content {
@@ -35,6 +54,7 @@
       max-width: 1430px;
       margin: 0 auto;
       padding: 0 2rem;
+      z-index: 1;
       z-index: 2;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -88,7 +108,7 @@
       font-weight: 400;
       line-height: 2.2;
       letter-spacing: 0.04em;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(30, 30, 30, 0.7);
       margin-bottom: 2.5rem;
       opacity: 0;
       transform: translateY(30px);
@@ -107,19 +127,19 @@
       min-width: 200px;
       padding: 1rem 2.5rem;
       background: transparent;
-      color: #fff;
+      color: #1e1e1e;
       text-decoration: none;
       font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       border-radius: 50px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(30, 30, 30, 0.3);
       transition: background 0.4s ease, border-color 0.4s ease;
     }
 
     .Solution-button a:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(30, 30, 30, 0.06);
+      border-color: rgba(30, 30, 30, 0.6);
     }
 
     .Solution-imageSide {
@@ -190,15 +210,14 @@
 
   <section class="Solution">
     <div class="Solution-bgFloat -fl01">
-      <img src="https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/recruit-img03.webp" alt="">
+      <img src="images/recruit/recruit-img03.png" alt="">
     </div>
     <div class="Solution-bgFloat -fl02">
-      <img src="https://raw.githubusercontent.com/tatsuhitooka-maker/yasuhira-2/main/images/recruit-img06.webp" alt="">
+      <img src="images/recruit/recruit-img06.png" alt="">
     </div>
 
     <div class="Solution-content">
       <div class="Solution-textSide">
-        <p class="Solution-title">( Our Solutions )</p>
         <p class="Solution-lead">
           <span class="HeadingReveal-row" data-row="0"></span>
           <span class="HeadingReveal-row" data-row="1"></span>
@@ -257,8 +276,7 @@
       }
     });
 
-    tl.to('.Solution-title', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0);
-    tl.to(chars, { y: 0, duration: 1, ease: 'power4.out', stagger: { each: 0.03, from: 'start' } }, 0.1);
+    tl.to(chars, { y: 0, duration: 1, ease: 'power4.out', stagger: { each: 0.03, from: 'start' } }, 0);
     tl.to('.Solution-headJa', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.4);
     tl.to('.Solution-description', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.55);
     tl.to('.Solution-button', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.65);
