@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Strengths Preview v1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: auto;
+    }
+
+    body {
+      font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0b0d12;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .spacer {
+      height: 60vh;
+      background: #0b0d12;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #555;
+      letter-spacing: 0.1em;
+    }
+
+    /* ============================================
+       STR FV（sticky + scrub 退場）
+    ============================================ */
+    .StrFv {
+      position: relative;
+      width: 100%;
+      min-height: 170vh;
+      overflow: visible;
+      background: #0b0d12;
+      color: #fff;
+    }
+
+    .StrFv-sticky {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      min-height: 780px;
+      overflow: hidden;
+    }
+
+    .StrFv-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(135deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.7) 100%),
+        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=2400&q=80');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+      will-change: transform;
+      transform-origin: center;
+    }
+
+    .StrFv-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(0,0,0,0.2) 0%,
+        rgba(0,0,0,0.15) 40%,
+        rgba(0,0,0,0.55) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .StrFv-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      padding: 36px 56px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .StrFv-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .StrFv-crumb {
+      font-family: "Encode Sans Semi Expanded", sans-serif;
+      font-weight: 500;
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.72);
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    .StrFv-crumb .sep {
+      margin: 0 10px;
+      opacity: 0.55;
+    }
+
+    .StrFv-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 56px;
+      width: 100%;
+    }
+
+    .StrFv-left {
+      max-width: 68%;
+    }
+
+    .StrFv-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 22px;
+      opacity: 0;
+      transform: translateY(14px);
+    }
+
+    .StrFv-label::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #c8102e;
+    }
+
+    .StrFv-heading {
+      font-family: "Encode Sans Semi Expanded", sans-serif;
+      font-weight: 600;
+      font-size: clamp(3.4rem, 8.8vw, 9.6rem);
+      letter-spacing: -0.015em;
+      line-height: 0.95;
+      color: #fff;
+      white-space: nowrap;
+      margin-bottom: 28px;
+    }
+
+    .StrFv-headingMask {
+      display: inline-flex;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+
+    .StrFv-lead {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 400;
+      font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+      line-height: 2;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.9);
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .StrFv-right {
+      min-width: 320px;
+      text-align: left;
+      padding-bottom: 6px;
+    }
+
+    .StrFv-contentsLabel {
+      font-family: "Encode Sans Semi Expanded", sans-serif;
+      font-weight: 500;
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 18px;
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    .StrFv-contentsList {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .StrFv-contentsList li {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 500;
+      font-size: clamp(1rem, 1.2vw, 1.1rem);
+      letter-spacing: 0.06em;
+      color: #fff;
+      opacity: 0;
+      transform: translateY(14px);
+    }
+
+    .StrFv-contentsList li .idx {
+      font-family: "Encode Sans Semi Expanded", sans-serif;
+      font-weight: 500;
+      font-size: 0.78em;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.08em;
+      min-width: 28px;
+    }
+
+    .StrFv-scroll {
+      position: absolute;
+      right: 40px;
+      bottom: 40px;
+      z-index: 3;
+      font-family: "Encode Sans Semi Expanded", sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      color: rgba(255,255,255,0.65);
+      writing-mode: vertical-rl;
+      opacity: 0;
+    }
+
+    .StrFv-scroll::after {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 48px;
+      background: rgba(255,255,255,0.65);
+      margin: 12px auto 0;
+      transform-origin: top;
+      animation: scrollLine 2.4s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%   { transform: scaleY(0); }
+      50%  { transform: scaleY(1); }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ============================================
+       STR POLICY（カードスタッキング）
+    ============================================ */
+    .StrPolicy {
+      position: relative;
+      width: 100%;
+      background: #1a1c22;
+      padding: 180px 0 0;
+    }
+
+    .StrPolicy-header {
+      padding: 0 88px 60px;
+      color: #fff;
+    }
+
+    .StrPolicy-titleEn {
+      font-family: "Encode Sans Semi Expanded", sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.6rem, 5.6vw, 4.6rem);
+      letter-spacing: -0.01em;
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .StrPolicy-titleJa {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .StrPolicy-titleCircle {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #c8102e;
+      border-radius: 50%;
+    }
+
+    .StrPolicy-list {
+      position: relative;
+      border-top: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .StrPolicy-card {
+      position: sticky;
+      background: #1a1c22;
+      border-bottom: 1px solid rgba(255,255,255,0.18);
+      padding: 80px 88px 80px;
+      display: flex;
+      align-items: center;
+      gap: 120px;
+      min-height: 520px;
+      will-change: transform;
+    }
+
+    /* 各カードの積層オフセット（後続ほど下にstick）— 前カードのheaderを約72pxずつ残す */
+    .StrPolicy-card:nth-child(1) { top: 0; }
+    .StrPolicy-card:nth-child(2) { top: 72px; }
+    .StrPolicy-card:nth-child(3) { top: 144px; }
+    .StrPolicy-card:nth-child(4) { top: 216px; }
+    .StrPolicy-card:nth-child(5) { top: 288px; }
+    .StrPolicy-card:nth-child(6) { top: 360px; }
+
+    .StrPolicy-number {
+      font-family: "Encode Sans Semi Expanded", sans-serif;
+      font-weight: 500;
+      font-size: clamp(3.6rem, 5.6vw, 5.6rem);
+      line-height: 1;
+      letter-spacing: 0.02em;
+      color: #fff;
+      min-width: 200px;
+      margin-top: 4px;
+    }
+
+    .StrPolicy-body {
+      flex: 1;
+      max-width: 560px;
+    }
+
+    .StrPolicy-cardTitle {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 500;
+      font-size: clamp(1.4rem, 1.8vw, 1.75rem);
+      line-height: 1.6;
+      letter-spacing: 0.06em;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .StrPolicy-cardTitleEn {
+      font-family: "Encode Sans Semi Expanded", sans-serif;
+      font-weight: 500;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 22px;
+      text-transform: uppercase;
+    }
+
+    .StrPolicy-cardDesc {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 400;
+      font-size: clamp(0.92rem, 1vw, 1rem);
+      line-height: 2;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .StrPolicy-figure {
+      flex: 0 0 300px;
+      width: 300px;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 6px;
+      background: #0b0d12;
+    }
+
+    .StrPolicy-figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.06);
+      transition: transform 1.2s ease;
+    }
+
+    .StrPolicy-card.is-shown .StrPolicy-figure img {
+      transform: scale(1);
+    }
+
+    /* ============================================
+       CTA
+    ============================================ */
+    .StrCta {
+      position: relative;
+      padding: 180px 88px 200px;
+      background: #0b0d12;
+      color: #fff;
+      text-align: center;
+    }
+
+    .StrCta-label {
+      font-family: "Encode Sans Semi Expanded", sans-serif;
+      font-weight: 500;
+      font-size: 0.82rem;
+      letter-spacing: 0.28em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 28px;
+      text-transform: uppercase;
+    }
+
+    .StrCta-heading {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 500;
+      font-size: clamp(1.5rem, 2.6vw, 2.4rem);
+      line-height: 1.7;
+      letter-spacing: 0.06em;
+      color: #fff;
+      margin-bottom: 48px;
+    }
+
+    .StrCta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px 72px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: transparent;
+      color: #fff;
+      font-family: "Encode Sans Semi Expanded", sans-serif;
+      font-weight: 500;
+      font-size: 0.92rem;
+      letter-spacing: 0.22em;
+      text-decoration: none;
+      transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+    }
+
+    .StrCta-button:hover {
+      background: #fff;
+      color: #0b0d12;
+      border-color: #fff;
+    }
+
+    /* ============================================
+       Responsive
+    ============================================ */
+    @media (max-width: 820px) {
+      .StrFv {
+        min-height: 160vh;
+      }
+      .StrFv-sticky {
+        min-height: 640px;
+      }
+      .StrFv-inner {
+        padding: 24px 20px 28px;
+      }
+      .StrFv-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+      }
+      .StrFv-left {
+        max-width: 100%;
+      }
+      .StrFv-heading {
+        font-size: clamp(2.6rem, 14vw, 5rem);
+        line-height: 1;
+        white-space: normal;
+      }
+      .StrFv-lead {
+        font-size: 0.9rem;
+        line-height: 1.9;
+      }
+      .StrFv-right {
+        min-width: 0;
+        width: 100%;
+      }
+      .StrFv-scroll {
+        display: none;
+      }
+
+      .StrPolicy {
+        padding: 100px 0 0;
+      }
+      .StrPolicy-header {
+        padding: 0 20px 40px;
+      }
+      .StrPolicy-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+        padding: 48px 20px 48px;
+        min-height: auto;
+      }
+      .StrPolicy-card:nth-child(1) { top: 0; }
+      .StrPolicy-card:nth-child(2) { top: 48px; }
+      .StrPolicy-card:nth-child(3) { top: 96px; }
+      .StrPolicy-card:nth-child(4) { top: 144px; }
+      .StrPolicy-card:nth-child(5) { top: 192px; }
+      .StrPolicy-card:nth-child(6) { top: 240px; }
+
+      .StrPolicy-number {
+        min-width: 0;
+        font-size: 3rem;
+      }
+      .StrPolicy-figure {
+        flex: 0 0 auto;
+        width: 100%;
+        height: 200px;
+      }
+
+      .StrCta {
+        padding: 100px 20px 120px;
+      }
+      .StrCta-button {
+        padding: 18px 44px;
+        font-size: 0.82rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       STR FV
+  ============================================ -->
+  <section class="StrFv" id="strfv">
+    <div class="StrFv-sticky" id="strfv-sticky">
+      <div class="StrFv-bg" id="strfv-bg"></div>
+      <div class="StrFv-overlay"></div>
+
+      <div class="StrFv-inner">
+
+        <div class="StrFv-top">
+          <div class="StrFv-crumb" id="strfv-crumb">
+            <span>TOP</span><span class="sep">－</span><span>弊社の強み</span>
+          </div>
+        </div>
+
+        <div class="StrFv-bottom">
+          <div class="StrFv-left">
+            <div class="StrFv-label" id="strfv-label">弊社の強み</div>
+            <h1 class="StrFv-heading" id="strfv-heading">OUR STRENGTHS</h1>
+            <p class="StrFv-lead" id="strfv-lead">
+              信頼される理由がここにある。5つの専門部門と商社機能を活かした独自のビジネスモデルで、設計から保守まで一貫したサービスを提供。
+            </p>
+          </div>
+
+          <div class="StrFv-right">
+            <div class="StrFv-contentsLabel" id="strfv-contents-label">Contents</div>
+            <ul class="StrFv-contentsList">
+              <li id="strfv-contents-01"><span class="idx">01</span>FAシステムによる提案力と実現力</li>
+              <li id="strfv-contents-02"><span class="idx">02</span>商社機能×技術力の両立</li>
+              <li id="strfv-contents-03"><span class="idx">03</span>一貫体制</li>
+              <li id="strfv-contents-04"><span class="idx">04</span>地域に根ざした信頼と実績</li>
+              <li id="strfv-contents-05"><span class="idx">05</span>情報発信力</li>
+              <li id="strfv-contents-06"><span class="idx">06</span>お客様の稼働を止めない</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="StrFv-scroll" id="strfv-scroll">SCROLL</div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       STR POLICY（6つの強みカードスタック）
+  ============================================ -->
+  <section class="StrPolicy" id="strpolicy">
+    <div class="StrPolicy-header">
+      <div class="StrPolicy-titleEn">Our Strengths</div>
+      <div class="StrPolicy-titleJa">
+        <span class="StrPolicy-titleCircle"></span>
+        <span>6つの強み</span>
+      </div>
+    </div>
+
+    <div class="StrPolicy-list" id="strpolicy-list">
+
+      <article class="StrPolicy-card" id="strpolicy-card-1">
+        <div class="StrPolicy-number">01</div>
+        <div class="StrPolicy-body">
+          <h3 class="StrPolicy-cardTitle">FAシステムによる提案力と実現力</h3>
+          <p class="StrPolicy-cardTitleEn">FA System Proposal</p>
+          <p class="StrPolicy-cardDesc">30年以上にわたるFAシステム設計の実績をベースに、お客様のラインに合わせたカスタム提案を行います。設計・製作・設置・調整まで自社完結で対応し、現場の声を形にする実現力が私たちの強みです。</p>
+        </div>
+        <div class="StrPolicy-figure">
+          <img src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=800&q=80" alt="">
+        </div>
+      </article>
+
+      <article class="StrPolicy-card" id="strpolicy-card-2">
+        <div class="StrPolicy-number">02</div>
+        <div class="StrPolicy-body">
+          <h3 class="StrPolicy-cardTitle">商社機能×技術力の両立</h3>
+          <p class="StrPolicy-cardTitleEn">Trading × Technology</p>
+          <p class="StrPolicy-cardDesc">商社としての調達ネットワークと、自社加工・組立の技術部門を併せ持つハイブリッド体制。最適な部材を最短で調達し、精度の高いモノづくりへ昇華させる。価格と品質の両方に応えるビジネスモデルです。</p>
+        </div>
+        <div class="StrPolicy-figure">
+          <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=800&q=80" alt="">
+        </div>
+      </article>
+
+      <article class="StrPolicy-card" id="strpolicy-card-3">
+        <div class="StrPolicy-number">03</div>
+        <div class="StrPolicy-body">
+          <h3 class="StrPolicy-cardTitle">一貫体制</h3>
+          <p class="StrPolicy-cardTitleEn">End-to-End Service</p>
+          <p class="StrPolicy-cardDesc">企画・設計・調達・加工・組立・据付・保守まで、すべての工程を自社内で完結。窓口を一本化することで情報伝達のロスを最小化し、責任を持って最後までお客様の設備を支えます。</p>
+        </div>
+        <div class="StrPolicy-figure">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="">
+        </div>
+      </article>
+
+      <article class="StrPolicy-card" id="strpolicy-card-4">
+        <div class="StrPolicy-number">04</div>
+        <div class="StrPolicy-body">
+          <h3 class="StrPolicy-cardTitle">地域に根ざした信頼と実績</h3>
+          <p class="StrPolicy-cardTitleEn">Deep Roots in Harima</p>
+          <p class="StrPolicy-cardDesc">1937年の創業以来、播磨地域を中心に1,000社を超えるお取引を積み重ねてきました。地元に根ざした密な関係性と、現場を理解したきめ細やかな対応力が、長年の信頼の源泉です。</p>
+        </div>
+        <div class="StrPolicy-figure">
+          <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=800&q=80" alt="">
+        </div>
+      </article>
+
+      <article class="StrPolicy-card" id="strpolicy-card-5">
+        <div class="StrPolicy-number">05</div>
+        <div class="StrPolicy-body">
+          <h3 class="StrPolicy-cardTitle">情報発信力</h3>
+          <p class="StrPolicy-cardTitleEn">Knowledge Sharing</p>
+          <p class="StrPolicy-cardDesc">自社主催のセミナーや技術展示会、定期発行の技術誌を通じて、業界の最新情報とノウハウをお客様へ届けています。単なる取引先ではなく、「共に学び、共に進化するパートナー」であり続けるために。</p>
+        </div>
+        <div class="StrPolicy-figure">
+          <img src="https://images.unsplash.com/photo-1591115765373-5207764f72e4?auto=format&fit=crop&w=800&q=80" alt="">
+        </div>
+      </article>
+
+      <article class="StrPolicy-card" id="strpolicy-card-6">
+        <div class="StrPolicy-number">06</div>
+        <div class="StrPolicy-body">
+          <h3 class="StrPolicy-cardTitle">お客様の稼働を止めない</h3>
+          <p class="StrPolicy-cardTitleEn">Zero Downtime</p>
+          <p class="StrPolicy-cardDesc">FAシステム、機械営業、ルート営業、加工開発、メンテナンスの5部門が有機的に連携。設備トラブル時の一次対応から恒久対策まで、お客様の生産ラインが止まらないよう最短でお応えします。</p>
+        </div>
+        <div class="StrPolicy-figure">
+          <img src="https://images.unsplash.com/photo-1518609571773-39b7d303a87b?auto=format&fit=crop&w=800&q=80" alt="">
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============================================
+       CTA
+  ============================================ -->
+  <section class="StrCta">
+    <div class="StrCta-label">Contact</div>
+    <h2 class="StrCta-heading">
+      課題解決への第一歩を、<br>一緒に踏み出しませんか？
+    </h2>
+    <a href="#" class="StrCta-button">お問い合わせ</a>
+  </section>
+
+  <div class="spacer">↓ footer ↓</div>
+
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+
+    /* ============================================
+       STR FV
+    ============================================ */
+    ;(function () {
+      var section = document.getElementById('strfv');
+      var bg = document.getElementById('strfv-bg');
+      var heading = document.getElementById('strfv-heading');
+      var lead = document.getElementById('strfv-lead');
+      var label = document.getElementById('strfv-label');
+      var crumb = document.getElementById('strfv-crumb');
+      var contentsLabel = document.getElementById('strfv-contents-label');
+      var contentsItems = [
+        document.getElementById('strfv-contents-01'),
+        document.getElementById('strfv-contents-02'),
+        document.getElementById('strfv-contents-03'),
+        document.getElementById('strfv-contents-04'),
+        document.getElementById('strfv-contents-05'),
+        document.getElementById('strfv-contents-06'),
+      ];
+      var scrollSign = document.getElementById('strfv-scroll');
+
+      function splitToChars(el) {
+        var text = el.textContent.trim();
+        if (!text) return [];
+        var cs = getComputedStyle(el);
+        var origColor = cs.color;
+        var origFont = cs.fontFamily;
+
+        var mask = document.createElement('span');
+        mask.className = 'StrFv-headingMask';
+
+        el.textContent = '';
+        var chars = [];
+        for (var i = 0; i < text.length; i++) {
+          var ch = text[i];
+          if (ch === ' ') {
+            mask.appendChild(document.createTextNode('\u00A0'));
+            continue;
+          }
+          var span = document.createElement('span');
+          span.textContent = ch;
+          span.style.display = 'inline-block';
+          span.style.color = origColor;
+          span.style.fontFamily = origFont;
+          span.style.transform = 'translateY(110%)';
+          span.style.willChange = 'transform';
+          mask.appendChild(span);
+          chars.push(span);
+        }
+        el.appendChild(mask);
+        return chars;
+      }
+
+      splitToChars(heading);
+
+      gsap.to(bg, {
+        scale: 1.12,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        }
+      });
+
+      var exitTargets = [crumb, label, heading, lead, contentsLabel].concat(contentsItems).concat([scrollSign]);
+
+      var tl = gsap.timeline({
+        delay: 0.15,
+        onComplete: function() {
+          gsap.to(exitTargets, {
+            y: -60,
+            opacity: 0,
+            ease: 'power2.in',
+            scrollTrigger: {
+              trigger: section,
+              start: '15% top',
+              end: '65% top',
+              scrub: 1.2,
+            }
+          });
+        }
+      });
+      var headingChars = heading.querySelectorAll('.StrFv-headingMask > span');
+
+      tl.to(crumb, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 0);
+      tl.to(label, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.1);
+      tl.to(headingChars, {
+        y: 0, duration: 1.1, ease: 'power4.out',
+        stagger: { each: 0.04, from: 'start' }
+      }, 0.2);
+      tl.to(lead, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, 0.55);
+      tl.to(contentsLabel, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 0.45);
+      tl.to(contentsItems, {
+        opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+        stagger: { each: 0.08, from: 'start' }
+      }, 0.55);
+      tl.to(scrollSign, { opacity: 1, duration: 0.6, ease: 'power2.out' }, 1.0);
+    })();
+
+    /* ============================================
+       STR POLICY カード入場
+       （積層はCSS sticky + top offsetで実現、
+        JSは各カード到達時のフェード/画像ズームのみ）
+    ============================================ */
+    ;(function () {
+      for (var i = 1; i <= 6; i++) {
+        var card = document.getElementById('strpolicy-card-' + i);
+        if (!card) continue;
+        gsap.fromTo(card,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1, y: 0,
+            duration: 0.9, ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+              onEnter: (function (el) { return function () { el.classList.add('is-shown'); }; })(card),
+            }
+          }
+        );
+      }
+    })();
+  </script>
+
+</body>
+</html>
